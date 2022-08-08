@@ -20,3 +20,10 @@
 2. sustilizuosiu
 3. kursiu html dinamiskai pagal [1] pavyzdi (generatePost)
 4. generuosiu visus postus su funkcija (generatePostList)
+5. prideti query parametra i single-post.html nuoroda
+
+### single-post.html
+
+1. navigacija
+2. issiimti id i query parametru
+3. pilna vieno post informacija gauta pagal id
