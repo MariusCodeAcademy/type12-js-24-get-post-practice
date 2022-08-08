@@ -73,7 +73,8 @@ body {
 .post .post-tags {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 8px;
+  flex-wrap: wrap;
   padding-left: 0;
   margin-top: 0;
 }

@@ -2,6 +2,7 @@
 console.log('main.js');
 
 // Taikomes
+const postsContainerEl = document.querySelector('.posts-container');
 
 // Eiga
 async function init() {
@@ -23,7 +24,12 @@ async function getPostsFromApi(url) {
 }
 
 function makePostsList(arr) {
+  postsContainerEl.innerHTML = '';
   // generate one post in a loop
+  const htmlElArr = arr.map((pObj) => makeOnePostHtml(pObj));
+  postsContainerEl.append(...htmlElArr);
+  // spread operator
+  // ...[1, 2, 4] => 1, 2 ,3
 }
 
 function makeOnePostHtml(postObj) {
@@ -31,8 +37,7 @@ function makeOnePostHtml(postObj) {
   divEl.className = 'post';
   divEl.innerHTML = `
   <ul class="post-tags">
-    <li>red</li>
-    <li>green</li>
+  ${makeTagsHtml(postObj.tags)}  
   </ul>
   <p class="post__reactions"><span>${postObj.reactions}</span> reactions</p>
   <h3>${postObj.title}</h3>
@@ -40,4 +45,8 @@ function makeOnePostHtml(postObj) {
   <a class="post__link" href="single-post.html">Read more > </a>
   `;
   return divEl;
+}
+
+function makeTagsHtml(arr) {
+  return arr.map((tag) => `<li>${tag}</li>`).join('');
 }
