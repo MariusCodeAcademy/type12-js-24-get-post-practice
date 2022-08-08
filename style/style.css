@@ -30,3 +30,57 @@ body {
   margin-bottom: 60px;
   font-weight: 500;
 }
+
+.posts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.post {
+  background-color: #fff;
+  padding: 24px;
+}
+
+.post__reactions {
+  color: #c2c2c2;
+  font-size: 12px;
+}
+.post h3 {
+  font-size: 18px;
+  letter-spacing: -0.1px;
+  line-height: 23px;
+  margin-bottom: 16px;
+  color: #444;
+  font-weight: 600;
+}
+.post__text {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1.7;
+  letter-spacing: 0;
+  color: #777;
+}
+.post__link {
+  color: #484848;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase !important;
+}
+
+.post .post-tags {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding-left: 0;
+  margin-top: 0;
+}
+.post .post-tags li {
+  background-color: #2250fc;
+  color: #fff;
+  font-size: 13px;
+  padding: 2px 16px;
+  border-radius: 50px;
+}
