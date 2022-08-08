@@ -4,8 +4,9 @@ console.log('main.js');
 // Taikomes
 
 // Eiga
-function init() {
-  getPostsFromApi(baseUrl);
+async function init() {
+  const postsArr = await getPostsFromApi(baseUrl);
+  makePostsList(postsArr);
 }
 init();
 
@@ -19,4 +20,8 @@ async function getPostsFromApi(url) {
   const posts = dataBack.posts;
   console.log('posts ===', posts);
   return posts;
+}
+
+function makePostsList(arr) {
+  // generate one post in a loop
 }

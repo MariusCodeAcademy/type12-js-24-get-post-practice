@@ -13,3 +13,10 @@
 
 1. navigacija
 2. forma sukurti naujam postui
+
+### one post generation
+
+1. sukursiu html
+2. sustilizuosiu
+3. kursiu html dinamiskai pagal [1] pavyzdi (generatePost)
+4. generuosiu visus postus su funkcija (generatePostList)
