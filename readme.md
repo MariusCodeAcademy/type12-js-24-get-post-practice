@@ -26,4 +26,5 @@
 
 1. navigacija
 2. issiimti id i query parametru
-3. pilna vieno post informacija gauta pagal id
+3. fetch post objekta is https://dummyjson.com/posts/<id>
+4. sudedam to post informacija
