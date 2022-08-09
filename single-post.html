@@ -8,29 +8,34 @@
   <title>JS project</title>
   <link rel="stylesheet" href="./style/style.css">
   <script src="./js/helper.js" defer></script>
-  <script src="./js/main.js" defer></script>
+  <script src="./js/single-post.js" defer></script>
 </head>
 
 <body>
 
 
-  <div class="container">
+  <div class="container single-post">
 
-    <h1 class="main-title">Our posts project</h1>
+    <div class="layout">
+      <main class="post">
+        <h1 class="main-title">Our posts project</h1>
+        <p class="post__reactions"><span>2</span> reactions</p>
+        <p class="post__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, doloribus!</p>
+        <a class="post__link" href="/">
+          &lt; Go back</a>
+      </main>
 
-    <div class="post">
-      <ul class="post-tags">
-        <li>red</li>
-        <li>green</li>
-      </ul>
-      <p class="post__reactions"><span>2</span> reactions</p>
-      <h3>title</h3>
-      <p class="post__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, doloribus!</p>
-      <a class="post__link" href="/">Read more > </a>
+
+      <aside>
+        <h3>Tags</h3>
+        <ul class="post-tags">
+          <li>red</li>
+          <li>green</li>
+        </ul>
+      </aside>
+
+
     </div>
-
-
-  </div>
 
 
 </body>
