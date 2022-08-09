@@ -11,8 +11,10 @@
 
 ### add-post.html
 
-1. navigacija
-2. forma sukurti naujam postui
+1. suskuti add-post.html puslapi
+2. prisideti helperi ir jam skirta js faila
+3. dinamiskai prideti navigacija navigacija
+4. forma sukurti naujam postui
 
 ### one post generation
 
