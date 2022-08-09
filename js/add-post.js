@@ -27,7 +27,7 @@ formEl.addEventListener('submit', (e) => {
 
 // siusti post requesta i backend
 async function sendDataToCreatePost(newPost) {
-  const resp = await fetch(`${baseUrl}/add`, {
+  const resp = await fetch(baseUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ async function sendDataToCreatePost(newPost) {
     body: JSON.stringify(newPost),
   });
   console.log('resp ===', resp);
-  if (resp.status === 200) {
+  if (resp.status === 201) {
     // redirect to home page
     console.log('success');
     window.location.href = 'index.html?postCreated=1';

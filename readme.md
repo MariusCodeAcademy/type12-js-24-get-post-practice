@@ -1,7 +1,7 @@
 # Post app
 
 [pavyzdys](https://inspirothemes.com/polo/index.html)
-[api we use dummyjson](https://dummyjson.com/docs/posts)
+[api we use jsonserver](https://github.com/MariusCodeAcademy/posts-rest-json-server)
 
 ### index.html
 

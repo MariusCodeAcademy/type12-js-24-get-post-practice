@@ -20,7 +20,7 @@ init();
 async function getPostsFromApi(url) {
   const resp = await fetch(url);
   const dataBack = await resp.json();
-  const posts = dataBack.posts;
+  const posts = dataBack;
   console.log('posts ===', posts);
   return posts;
 }
@@ -44,6 +44,7 @@ function makeOnePostHtml(postObj) {
   <ul class="post-tags">
   ${makeTagsHtml(postObj.tags)}  
   </ul>
+  <img src="${postObj.image}" alt="paveikslelis" /> 
   <p class="post__reactions"><span>${postObj.reactions}</span> reactions</p>
   <h3>${postObj.title}</h3>
   <p class="post__text">${postObj.body.slice(0, 15)}...</p>
