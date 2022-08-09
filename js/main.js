@@ -7,7 +7,9 @@ const postsContainerEl = document.querySelector('.posts-container');
 // Eiga
 async function init() {
   const postsArr = await getPostsFromApi(baseUrl);
-  makePostsList(postsArr);
+  // debugger;
+  await makePostsList(postsArr);
+  setTimeout(checkPostCreateStatus, 500);
 }
 init();
 
@@ -23,13 +25,16 @@ async function getPostsFromApi(url) {
   return posts;
 }
 
-function makePostsList(arr) {
-  postsContainerEl.innerHTML = '';
-  // generate one post in a loop
-  const htmlElArr = arr.map((pObj) => makeOnePostHtml(pObj));
-  postsContainerEl.append(...htmlElArr);
-  // spread operator
-  // ...[1, 2, 4] => 1, 2 ,3
+async function makePostsList(arr) {
+  return new Promise((resolve, reject) => {
+    postsContainerEl.innerHTML = '';
+    // generate one post in a loop
+    const htmlElArr = arr.map((pObj) => makeOnePostHtml(pObj));
+    postsContainerEl.append(...htmlElArr);
+    resolve();
+    // spread operator
+    // ...[1, 2, 4] => 1, 2 ,3
+  });
 }
 
 function makeOnePostHtml(postObj) {
@@ -49,4 +54,12 @@ function makeOnePostHtml(postObj) {
 
 function makeTagsHtml(arr) {
   return arr.map((tag) => `<li>${tag}</li>`).join('');
+}
+
+function checkPostCreateStatus() {
+  const postCreated = new URLSearchParams(window.location.search).get('postCreated');
+  console.log('postCreated ===', postCreated);
+  if (postCreated !== null) {
+    alert('post created successfully');
+  }
 }

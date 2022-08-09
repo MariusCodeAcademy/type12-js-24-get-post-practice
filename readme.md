@@ -1,6 +1,7 @@
-## steps
+# Post app
 
 [pavyzdys](https://inspirothemes.com/polo/index.html)
+[api we use dummyjson](https://dummyjson.com/docs/posts)
 
 ### index.html
 

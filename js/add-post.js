@@ -21,7 +21,31 @@ formEl.addEventListener('submit', (e) => {
     tags: tagsArray,
   };
   console.log('newPost ===', newPost);
+  sendDataToCreatePost(newPost);
   formEl.reset();
 });
 
 // siusti post requesta i backend
+async function sendDataToCreatePost(newPost) {
+  const resp = await fetch(`${baseUrl}/add`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newPost),
+  });
+  console.log('resp ===', resp);
+  if (resp.status === 200) {
+    // redirect to home page
+    console.log('success');
+    window.location.href = 'index.html?postCreated=1';
+  } else {
+    console.log('error');
+    const dataInJs = await resp.json();
+    alert(dataInJs.message);
+  }
+  const dataInJs = await resp.json();
+  console.log('dataInJs ===', dataInJs);
+}
+// sekmes atveju keliaujam i index.html ir pranesam kad pavyko
+// nesekmes atveju iskonsolinam klaida ir parodom ja su alert
