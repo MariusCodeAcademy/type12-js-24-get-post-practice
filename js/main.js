@@ -14,7 +14,7 @@ async function init() {
   const postsArr = await getPostsFromApi(baseUrl);
   mainArr = postsArr;
   // debugger;
-  await makePostsList(postsArr);
+  makePostsList(postsArr);
   // const tagsArr = document.querySelectorAll('.tag');
   // console.log('tagsArr ===', tagsArr);
   // tagsArr.forEach((tag) => tag.addEventListener('click', filterByTag));
@@ -46,15 +46,15 @@ async function getPostsFromApi(url) {
 }
 
 async function makePostsList(arr) {
-  return new Promise((resolve, reject) => {
-    postsContainerEl.innerHTML = '';
-    // generate one post in a loop
-    const htmlElArr = arr.map((pObj) => makeOnePostHtml(pObj));
-    postsContainerEl.append(...htmlElArr);
-    resolve();
-    // spread operator
-    // ...[1, 2, 4] => 1, 2 ,3
-  });
+  // return new Promise((resolve, reject) => {
+  postsContainerEl.innerHTML = '';
+  // generate one post in a loop
+  const htmlElArr = arr.map((pObj) => makeOnePostHtml(pObj));
+  postsContainerEl.append(...htmlElArr);
+  // resolve();
+  // spread operator
+  // ...[1, 2, 4] => 1, 2 ,3
+  // });
 }
 
 function makeOnePostHtml(postObj) {
