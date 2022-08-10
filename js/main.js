@@ -3,15 +3,34 @@ console.log('main.js');
 
 // Taikomes
 const postsContainerEl = document.querySelector('.posts-container');
+// const tagsArr = document.querySelectorAll('.tag');
+// console.log('tagsArr ===', tagsArr); // dar nera sukurta korteliu su tagais
+
+let mainArr = [];
 
 // Eiga
 async function init() {
   const postsArr = await getPostsFromApi(baseUrl);
+  mainArr = postsArr;
   // debugger;
   await makePostsList(postsArr);
+  const tagsArr = document.querySelectorAll('.tag');
+  console.log('tagsArr ===', tagsArr);
+  tagsArr.forEach((tag) => tag.addEventListener('click', filterByTag));
   setTimeout(checkPostCreateStatus, 500);
 }
 init();
+
+function filterByTag(event) {
+  console.log('event ===', event);
+  const elAntkurioPaspaudem = event.target;
+  console.log('elAntkurioPaspaudem ===', elAntkurioPaspaudem.textContent);
+}
+
+function filterPosts(filterValue) {
+  const filteredArr = mainArr.filter();
+  makePostsList(filteredArr);
+}
 
 // Addeventlistenes
 
@@ -53,7 +72,7 @@ function makeOnePostHtml(postObj) {
 }
 
 function makeTagsHtml(arr) {
-  return arr.map((tag) => `<li>${tag}</li>`).join('');
+  return arr.map((tag) => `<li class="tag">${tag}</li>`).join('');
 }
 
 function checkPostCreateStatus() {
