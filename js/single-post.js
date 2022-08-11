@@ -39,3 +39,28 @@ function fillSinglePostHtml(postDataObj) {
 
 // deleteBtnEl paspaudus mes siunciam PATCH uzklausa ir padarom archived = true,
 // jei sekmingai, naviguojam i main page
+
+deleteBtnEl.addEventListener('click', async () => {
+  if (confirm('Ar tikrai nori istrinti?')) {
+    console.log('delete', currentId);
+    const resp = await deleteSinglePost(currentId);
+    if (resp.ok) {
+      console.log('istrinta sekmingai');
+      window.location.href = 'index.html';
+    }
+  } else {
+    console.log('apsigalvojai');
+  }
+});
+
+async function deleteSinglePost(id) {
+  const resp = await fetch(`${baseUrl}/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      archived: true,
+    }),
+  });
+  console.log('resp ===', resp);
+  return resp;
+}

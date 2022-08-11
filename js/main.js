@@ -6,7 +6,7 @@ const postsContainerEl = document.querySelector('.posts-container');
 
 // Eiga
 async function init() {
-  const postsArr = await getPostsFromApi(baseUrl);
+  const postsArr = await getPostsFromApi(baseUrl + '?archived=false');
   // debugger;
   await makePostsList(postsArr);
   setTimeout(checkPostCreateStatus, 500);
