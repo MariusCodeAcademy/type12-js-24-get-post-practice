@@ -9,6 +9,7 @@ const mainTitleEl = document.querySelector('.main-title');
 const postReactionsEl = document.querySelector('.post__reactions span');
 const postTextEl = document.querySelector('.post__text');
 const postTagsEl = document.querySelector('.post-tags');
+const imageEl = document.getElementById('image');
 
 async function init() {
   const postData = await getPostData(`${baseUrl}/${currentId}`);
@@ -29,6 +30,9 @@ function fillSinglePostHtml(postDataObj) {
   mainTitleEl.textContent = postDataObj.title;
   postReactionsEl.textContent = postDataObj.reactions;
   postTextEl.textContent = postDataObj.body;
+  imageEl.src = postDataObj.image;
+  imageEl.className = 'hero-img';
+  imageEl.alt = postDataObj.title;
   postTagsEl.innerHTML = '';
   postDataObj.tags.forEach((tag) => postTagsEl.insertAdjacentHTML('afterbegin', `<li>${tag}</li>`));
 }

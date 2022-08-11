@@ -91,6 +91,13 @@ body {
 .single-post {
   background-color: #fff;
 }
+
+.hero-img {
+  max-height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .single-post .layout {
   display: grid;
   grid-template-columns: 7fr 3fr;

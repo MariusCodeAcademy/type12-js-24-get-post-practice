@@ -9,7 +9,7 @@ const formEl = document.forms[0];
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault();
-  const { title, reactions, userId, body, tags } = formEl.elements;
+  const { title, reactions, userId, body, tags, image } = formEl.elements;
   console.log('tags ===', tags);
   const tagsArray = tags.value.split(',').map((tag) => tag.trim());
 
@@ -19,6 +19,7 @@ formEl.addEventListener('submit', (e) => {
     userId: userId.valueAsNumber,
     body: body.value,
     tags: tagsArray,
+    image: image.value,
   };
   console.log('newPost ===', newPost);
   sendDataToCreatePost(newPost);
