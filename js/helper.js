@@ -11,3 +11,21 @@ async function initHeader() {
   document.body.insertAdjacentHTML('afterbegin', htmlHeader);
 }
 initHeader();
+
+// Functions
+
+function http(url) {
+  return fetch(url)
+    .then((resp) => {
+      if (!resp.ok)
+        throw new Error(
+          'there was error: ' + resp.status + ' ' + resp.statusText + ' geting ' + url
+        );
+      return resp.json();
+    })
+    .then((data) => {
+      console.log('http data ===', data);
+      return data;
+    })
+    .catch((err) => console.warn(err));
+}
