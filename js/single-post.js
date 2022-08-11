@@ -10,10 +10,10 @@ const postReactionsEl = document.querySelector('.post__reactions span');
 const postTextEl = document.querySelector('.post__text');
 const postTagsEl = document.querySelector('.post-tags');
 const imageEl = document.getElementById('image');
+const deleteBtnEl = document.getElementById('delete');
 
 async function init() {
   const postData = await getPostData(`${baseUrl}/${currentId}`);
-
   fillSinglePostHtml(postData);
 }
 init();
@@ -36,3 +36,6 @@ function fillSinglePostHtml(postDataObj) {
   postTagsEl.innerHTML = '';
   postDataObj.tags.forEach((tag) => postTagsEl.insertAdjacentHTML('afterbegin', `<li>${tag}</li>`));
 }
+
+// deleteBtnEl paspaudus mes siunciam PATCH uzklausa ir padarom archived = true,
+// jei sekmingai, naviguojam i main page
