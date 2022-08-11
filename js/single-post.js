@@ -11,6 +11,10 @@ const postTextEl = document.querySelector('.post__text');
 const postTagsEl = document.querySelector('.post-tags');
 const imageEl = document.getElementById('image');
 const deleteBtnEl = document.getElementById('delete');
+const editLinkEl = document.getElementById('editLink');
+
+// query param for edit link
+editLinkEl.href += '?postId=' + currentId;
 
 async function init() {
   const postData = await getPostData(`${baseUrl}/${currentId}`);
