@@ -9,13 +9,10 @@ console.log('main.js');
 const postsContainerEl = document.querySelector('.posts-container');
 
 // Eiga
-async function init() {
-  const postsArr = await http(baseUrl + '?archived=false');
-  // debugger;
-  await makePostsList(postsArr);
-  setTimeout(checkPostCreateStatus, 500);
-}
-init();
+
+const postsArr = await http(baseUrl + '?archived=false');
+await makePostsList(postsArr);
+setTimeout(checkPostCreateStatus, 500);
 
 // Addeventlistenes
 

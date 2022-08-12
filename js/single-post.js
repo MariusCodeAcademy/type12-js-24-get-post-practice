@@ -1,6 +1,7 @@
 'use strict';
 
 import { baseUrl, http } from './modules/helper.js';
+import initHeader from './modules/init-header.js';
 
 console.log('single-post.js');
 

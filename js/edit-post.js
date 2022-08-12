@@ -1,6 +1,7 @@
 'use strict';
 
 import { baseUrl, http } from './modules/helper.js';
+import initHeader from './modules/init-header.js';
 
 console.log('edit-post.js');
 
@@ -28,6 +29,7 @@ editFormEl.addEventListener('submit', (e) => {
 function fillOutTheFormPlease(data) {
   console.log('data ===', data);
   // TODO: supildyti ciklo metu (for in)
+
   editFormEl.elements.title.value = data.title;
   editFormEl.elements.reactions.value = data.reactions;
   editFormEl.elements.image.value = data.image;
