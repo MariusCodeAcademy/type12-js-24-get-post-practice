@@ -30,7 +30,12 @@ function fillOutTheFormPlease(data) {
   console.log('data ===', data);
   // TODO: supildyti ciklo metu (for in)
 
-  editFormEl.elements.title.value = data.title;
-  editFormEl.elements.reactions.value = data.reactions;
-  editFormEl.elements.image.value = data.image;
+  for (let key in data) {
+    console.log('key ===', key);
+    const value = data[key];
+    console.log('value ===', value);
+    if (editFormEl.elements[key]) {
+      editFormEl.elements[key].value = data[key];
+    }
+  }
 }
