@@ -1,4 +1,7 @@
 'use strict';
+
+import { baseUrl, http } from './modules/helper.js';
+
 console.log('edit-post.js');
 
 // pasiiimti query param reiksme
@@ -20,14 +23,6 @@ editFormEl.addEventListener('submit', (e) => {
   e.preventDefault();
   console.log('put http to update the form');
 });
-
-async function getPostData(url) {
-  const resp = await fetch(url);
-  const dataBack = await resp.json();
-  const singlePostData = dataBack;
-  console.log('singlePostData ===', singlePostData);
-  return singlePostData;
-}
 
 // supildyti formos reiksmes (values)
 function fillOutTheFormPlease(data) {

@@ -1,4 +1,8 @@
 'use strict';
+
+import { http, baseUrl } from './modules/helper.js';
+import initHeader from './modules/init-header.js';
+
 console.log('main.js');
 
 // Taikomes
@@ -6,7 +10,7 @@ const postsContainerEl = document.querySelector('.posts-container');
 
 // Eiga
 async function init() {
-  const postsArr = await getPostsFromApi(baseUrl + '?archived=false');
+  const postsArr = await http(baseUrl + '?archived=false');
   // debugger;
   await makePostsList(postsArr);
   setTimeout(checkPostCreateStatus, 500);
@@ -16,14 +20,6 @@ init();
 // Addeventlistenes
 
 // Funcitons
-
-async function getPostsFromApi(url) {
-  const resp = await fetch(url);
-  const dataBack = await resp.json();
-  const posts = dataBack;
-  console.log('posts ===', posts);
-  return posts;
-}
 
 async function makePostsList(arr) {
   return new Promise((resolve, reject) => {
