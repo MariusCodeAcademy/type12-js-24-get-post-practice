@@ -1,7 +1,7 @@
 'use strict';
 
 import { DInput, makeAllInputElements } from './modules/dynamicInputs.js';
-import { baseUrl, http } from './modules/helper.js';
+import { baseUrl, commentsUrl, http } from './modules/helper.js';
 import initHeader from './modules/init-header.js';
 
 console.log('single-post.js');
@@ -18,6 +18,7 @@ const imageEl = document.getElementById('image');
 const deleteBtnEl = document.getElementById('delete');
 const editLinkEl = document.getElementById('editLink');
 const commentsFormEl = document.forms.addComment;
+const commCont = document.querySelector('.comments-container');
 
 // query param for edit link
 editLinkEl.href += '?postId=' + currentId;
@@ -84,8 +85,63 @@ const commentInputs = [
 const inputShortcuts = makeAllInputElements(commentsFormEl, commentInputs);
 console.log('inputShortcuts ===', inputShortcuts);
 
-commentsFormEl.addEventListener('submit', (e) => {
+commentsFormEl.addEventListener('submit', async (e) => {
   e.preventDefault();
   console.log('Lifes goood');
   // surinkti visus inputus ir pagaminti objekta
+  const newCommentObj = {
+    text: inputShortcuts.text.value,
+    date: inputShortcuts.date.value,
+    author: inputShortcuts.author.value,
+    postId: +currentId,
+  };
+  console.log('newCommentObj ===', newCommentObj);
+  const resp = await sendNewPostRequest(newCommentObj);
+  if (resp.status === 201) {
+    commentsFormEl.reset();
+    loadComments(+currentId);
+  } else {
+    console.warn(resp.status);
+  }
 });
+
+async function sendNewPostRequest(newPost) {
+  const resp = await fetch(commentsUrl, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(newPost),
+  });
+  console.log('resp ===', resp);
+  return resp;
+}
+loadComments(+currentId);
+async function loadComments(postId) {
+  // atvaizduoti visus komentarus
+
+  // gauti komentarus
+  const commentsArr = await http(`${commentsUrl}?postId=${postId}`);
+  console.log('commentsArr ===', commentsArr);
+  makeCommentsHtml(commentsArr);
+}
+
+/***
+ * <div class="comment card">
+    <h3>author</h3>
+    <p>date</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, non.</p>
+  </div>
+ * 
+  */
+function makeCommentsHtml(commentArr) {
+  commCont.innerHTML = '<h2>Our comments</h2>';
+  commentArr.forEach((commObj) => {
+    const divEl = document.createElement('div');
+    divEl.className = 'comment card';
+    divEl.innerHTML = `
+    <h3>${commObj.author}</h3>
+    <p>${commObj.date}</p>
+    <p>${commObj.text}</p>
+    `;
+    commCont.append(divEl);
+  });
+}

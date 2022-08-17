@@ -2,6 +2,7 @@
 console.log('helper.js');
 
 export const baseUrl = 'http://localhost:8001/posts';
+export const commentsUrl = 'http://localhost:8001/comments';
 
 // Functions
 
