@@ -1,5 +1,6 @@
 'use strict';
 
+import { DInput, makeAllInputElements } from './modules/dynamicInputs.js';
 import { baseUrl, http } from './modules/helper.js';
 import initHeader from './modules/init-header.js';
 
@@ -16,6 +17,7 @@ const postTagsEl = document.querySelector('.post-tags');
 const imageEl = document.getElementById('image');
 const deleteBtnEl = document.getElementById('delete');
 const editLinkEl = document.getElementById('editLink');
+const commentsFormEl = document.forms.addComment;
 
 // query param for edit link
 editLinkEl.href += '?postId=' + currentId;
@@ -64,3 +66,30 @@ async function deleteSinglePost(id) {
   console.log('resp ===', resp);
   return resp;
 }
+
+// Comments form
+
+const commentInputs = [
+  new DInput({ pl: 'Your name', name: 'author' }),
+  new DInput({
+    name: 'date',
+    disabled: true,
+    type: 'date',
+    value: new Date().toLocaleString('lt-LT', { dateStyle: 'medium' }),
+  }),
+  new DInput({ type: 'textarea', pl: 'Your comment', name: 'text' }),
+  new DInput({ type: 'submit', value: 'Add comment' }),
+];
+console.log('commentInputs ===', commentInputs);
+const inputShortcuts = makeAllInputElements(commentsFormEl, commentInputs);
+console.log('inputShortcuts ===', inputShortcuts);
+
+/**
+ * nauja forma su inputais
+
+"text": "Cool article!!! about html",
+
+      "date": "2015-07-01T00:00:00",
+
+      "author": "John Smith",
+ */
