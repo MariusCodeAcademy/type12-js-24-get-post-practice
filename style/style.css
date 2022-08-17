@@ -125,3 +125,17 @@ body {
   border-color: #2250fc;
   color: #fff;
 }
+
+/*  COMMENTS  */
+
+.comments-form input {
+  width: 100%;
+}
+.comments-form textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.comments-form > * {
+  margin-top: 10px;
+}

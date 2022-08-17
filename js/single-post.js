@@ -70,26 +70,22 @@ async function deleteSinglePost(id) {
 // Comments form
 
 const commentInputs = [
-  new DInput({ pl: 'Your name', name: 'author' }),
+  new DInput({ pl: 'Your name', name: 'author', required: true }),
   new DInput({
     name: 'date',
     disabled: true,
     type: 'date',
     value: new Date().toLocaleString('lt-LT', { dateStyle: 'medium' }),
   }),
-  new DInput({ type: 'textarea', pl: 'Your comment', name: 'text' }),
+  new DInput({ type: 'textarea', pl: 'Your comment', name: 'text', required: true }),
   new DInput({ type: 'submit', value: 'Add comment' }),
 ];
-console.log('commentInputs ===', commentInputs);
+
 const inputShortcuts = makeAllInputElements(commentsFormEl, commentInputs);
 console.log('inputShortcuts ===', inputShortcuts);
 
-/**
- * nauja forma su inputais
-
-"text": "Cool article!!! about html",
-
-      "date": "2015-07-01T00:00:00",
-
-      "author": "John Smith",
- */
+commentsFormEl.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log('Lifes goood');
+  // surinkti visus inputus ir pagaminti objekta
+});

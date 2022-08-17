@@ -32,17 +32,10 @@ export function makeAllInputElements(formEl, arr) {
 function makeSingleInputElement(inputObj) {
   const inputEl = document.createElement(inputObj.type === 'textarea' ? 'textarea' : 'input');
 
-  if (inputObj.type !== 'textarea') {
-    for (let key in inputObj) {
-      // inputEl.type = 'text'
-      inputEl[key] = inputObj[key];
-    }
-  } else {
-    for (let key in inputObj) {
-      if (key !== 'type') {
-        inputEl[key] = inputObj[key];
-      }
-    }
+  for (let key in inputObj) {
+    if (key === 'type' && inputObj.type === 'textarea') continue;
+    // inputEl.type = 'text'
+    inputEl[key] = inputObj[key];
   }
 
   return inputEl;
